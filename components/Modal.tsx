@@ -125,7 +125,8 @@ const Modal: React.FC<ModalProps> = ({
                             <Button 
                                 disabled={disabled} 
                                 label={actionLabel} 
-                                secondary fullWidth 
+                                secondary 
+                                fullWidth 
                                 large 
                                 onClick={handleSubmit} 
                             />
