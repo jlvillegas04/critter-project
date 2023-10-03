@@ -24,12 +24,15 @@ const Avatar: React.FC<AvatarProps> = ({
 
         router.push(url);
     }, [router, userId]);
+
+    const avatarSize = isLarge ? 120 : 50;
+
     return(
         <div
             className={`
                 ${hasBorder ? 'border-4 border-black' : ''}
-                ${isLarge ? 'h-32' : 'h-12'}
-                ${isLarge ? 'w-32' : 'w-12'}
+                h-${avatarSize}
+                w-${avatarSize}
                 rounded-full
                 hover:opacity-90
                 transition
@@ -37,16 +40,24 @@ const Avatar: React.FC<AvatarProps> = ({
                 relative
             `}
         >
-            <Image 
-                fill
+            <div
                 style={{
-                    objectFit: 'cover',
-                    borderRadius: '100%',
+                width: `${avatarSize}px`,
+                height: `${avatarSize}px`,
                 }}
-                alt="Avatar"
-                onClick={onClick}
-                src={fetchedUser?.profileImage || '/images/placeholder.png'}
-            />
+                className="relative"
+            >
+                <Image 
+                    fill
+                    style={{
+                        objectFit: 'cover',
+                        borderRadius: '100%',
+                    }}
+                    alt="Avatar"
+                    onClick={onClick}
+                    src={fetchedUser?.profileImage || '/images/placeholder.png'}
+                />
+            </div>
         </div>
     );
 }
